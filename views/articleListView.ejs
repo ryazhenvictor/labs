@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>User View</title>
+        <title>Auto Blog</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -14,18 +14,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>User:</h1>
+                    <h1>Articles</h1>
                 </div>
+
                 <div class="col-6">
-                    <% if (user) { %>
                     <ul class="list-group">
-                        <li class="list-group-item">Id: <%= user.id %></li>
-                        <li class="list-group-item">Name: <%= user.name %></li>
-                        <li class="list-group-item">Email: <%= user.email %></li>
+                        <% articles.forEach(article => { %>
+                        <li class="list-group-item">
+                             <a href="/<%= article.id %>">
+                                <strong><%= article.title %></strong><br />
+                                <%= article.content.substring(0, 100) %>...
+                            </a>
+                        </li>
+                        <% }) %>
                     </ul>
-                    <% } else { %>
-                    <p>User not found</p>
-                    <% } %>
+                </div>
+
+                <div class="col-6">
+                    <form action="/create" method="POST">
+                        <input type="text" name="title" placeholder="Enter article title" required />
+                        <input type="text" name="content" placeholder="Enter article content" required />
+                        <button type="submit">Add Article</button>
+                    </form>
                 </div>
             </div>
         </div>
