@@ -5,7 +5,7 @@ const app = express();
 const articleRoutes = require("./routes/articleRoutes");
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
