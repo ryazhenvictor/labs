@@ -18,3 +18,11 @@ exports.createArticle = (req, res) => {
     ArticleModel.addArticle(newArticle);
     res.redirect("/");
 };
+
+exports.getAbout = (req, res) => {
+    res.render("about");
+};
+
+exports.getPrivacyPolicy = (req, res) => {
+    res.render("privacyPolicy");
+};
